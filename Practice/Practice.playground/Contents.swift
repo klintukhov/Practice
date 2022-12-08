@@ -251,3 +251,94 @@ for (key, value) in dictionary {
 
 for value in dictionary.values {  // === vuvud value
      print ("value in dictionary \(value)")
+
+    // Homework
+
+
+//1 Создать 10 разных Dictionary с разными типами данных.Один из них должен содержать все месяца года на русском.Второй на английском Соберите все ключи и значения каждого Dictionary и распечатайте в консоль
+
+
+//
+var dOne = [1 : 1, 2 : 2, 3 : 3]
+//
+var dTwo = ["a" : 1, "b" : 2, "c" : 3, "d" : 2, "e" : 4,]
+//
+var dThree = ["japan" : "tokio", "france" : "paris", "deutschland" : "berlin", "england" : "London"]
+//
+var floatNumbers  = [4 : 1.22,  5 : 1.23, 6 : 1.24, 7 : 1.25 ]
+for (key, value)in floatNumbers {
+    print("the value  of \(key) number is \(value)")
+}
+//
+var schools = ["school#1" : "centr", "school#2" : "south", "school#3" : "west"]
+for (key, value) in schools {
+    print ("\(key), in the  \(value) part of the city")
+}
+
+//
+var days = ["year" : 365, "month" : 30, "week" : 7]
+
+for day in days {
+    print (day)
+}
+
+//
+var monthEng = [ 1 : "january ", 2 : "february", 3 : "march", 4 : "april", 5 : "may", 6 : "june", 7 : "July", 8 : "august", 9 : "september", 10 : "november", 11 : "december", 12 : "january"]
+
+for (key, value) in monthEng {
+    print ("the name of \(key)th month is \(value)")
+}
+var monthRus = [ 1 : "январь ", 2 : "февраль", 3 : "март", 4 : "апрель", 5 : "май", 6 : "июнь", 7 : "июль", 8 : "август", 9 : "сентябрь", 10 : "октябрь", 11 : "ноябрь", 12 : "декабрь"]
+
+for (key, value) in monthRus {
+    print ("имя \(key)го месяцв -  \(value)")
+}
+
+//2 Создайте пустой Dictionary и через условный оператор if проверьте пустой он или нет если пустой то в условии добавьте в него пару значений􏰀
+
+var emptyDict = [Int : String] ()
+if emptyDict.isEmpty {
+    emptyDict[2] = "two"
+}
+for (key, value) in emptyDict {
+    print ("the value of key # \(key) is \(value)")
+}
+
+//3 Cоздайте словарь — ключ: «иномарка», «значение»: название машины.
+
+var auto = ["import" : "honda"]
+
+// Добавьте в него значение по ключу - «отечественная». Распечатайте ключи и значения в консоль. Затем отдельно только значения.
+
+auto["domestic"] = "vaz"
+
+//Распечатайте ключи и значения в консоль.
+
+for (key, value) in auto {
+    print ("the \(key) is \(value)")
+}
+
+// Затем отдельно только значения.
+
+for value in auto.values {
+    print (value)
+}
+
+//Удалите из словаря иномарку по ключу (двумя способами: через nil и removeValue().
+
+auto.removeValue(forKey: "import")  // v1
+auto["import"] = nil                // v2
+
+//4 Создайте словарь, где ключ — фамилия солдата, а значение — его приветствие.
+
+let greeting = ["ivanov" : "zdraviya zhelayu tov mayor!!", "sidorov" : "zdraviya zhelayu tov leytenant!!", "petrov" : "zdraviya zhelayu tov kapitan!!"]
+
+// В цикле пройдитесь по всем ключам и распечатайте фамилию каждого солдата.
+for surname in greeting.keys {
+    print (surname)
+}
+
+// Сделайте тоже самое со значениями и распечатайте приветствие каждого солдата.
+for greet in greeting.values {
+    print (greet)
+}
