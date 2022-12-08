@@ -190,3 +190,36 @@ let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
     print("\(animalName)s have \(legCount) legs")
 }
+
+
+// Dictionary
+
+"""
+Словарь представляет собой контейнер, который хранит несколько значений одного и того же типа. Каждое значение связано с уникальным ключом, который выступает в качестве идентификатора этого значения внутри словаря. В отличие от элементов в массиве, элементы в словаре не имеют определенного порядка. Используйте словарь, когда вам нужно искать значения на основе их идентификатора, так же как в реальном мире словарь используется для поиска определения конкретного слова.
+
+"""
+
+// Practice part 1
+
+let dict : [Int : String] = [0 : "mama" , 1 : "papa"]
+// let Dictionary : <String, Double> = ["papa" : 23.0] =======> Generic
+let dict1 = [0 : "mama" , 1 : "papa"]
+
+let names = ["papa" : "Pavel", "mama" : "Iryna"]
+names["papa"] // calling value "Pavel" wit key "papa"
+
+var namesOfIntegers = [Int : String]()
+namesOfIntegers.count
+namesOfIntegers.isEmpty
+
+var dictionary = ["car" : "mercedes", "phone" : "iphone"]
+dictionary.count
+dictionary.isEmpty
+
+dictionary["mama"] = "Ira" // append new element to dictionary v1
+dictionary.updateValue("KHM", forKey: "home") // append new element to dictionary v2
+dictionary.keys // ===
+dictionary.values // ===
+dictionary["car"] = nil // removing element from dictionary v2
+dictionary.removeValue(forKey: "phone") // removing element fron dictionary v2
+namesOfIntegers = [:] // delete all elements from value
