@@ -240,3 +240,14 @@ dictionary.values // ===
 dictionary["car"] = nil // removing element from dictionary v2
 dictionary.removeValue(forKey: "phone") // removing element fron dictionary v2
 namesOfIntegers = [:] // delete all elements from value
+
+for key in dictionary.keys {
+    print ("keys of dictionary : \(key), values - \(dictionary[key]!)") // vuvud znacheniy key & value v1
+}
+
+for (key, value) in dictionary {
+     print ("keys of dictionary : \(key), values - \(value)") // vuvod znacheniya key & value v2
+}
+
+for value in dictionary.values {  // === vuvud value
+     print ("value in dictionary \(value)")
