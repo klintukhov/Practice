@@ -538,3 +538,12 @@ for surname in greeting.keys {
 for greet in greeting.values {
     print (greet)
 }
+    
+for ((key), value) in greeting {  // var 2
+    print("greeting for soldier : \(key), - \(value)")
+}
+    
+// greeting for soldier : sidorov, - zdraviya zhelayu tov leytenant!!
+// greeting for soldier : petrov, - zdraviya zhelayu tov kapitan!!
+// greeting for soldier : ivanov, - zdraviya zhelayu tov mayor!!
+
