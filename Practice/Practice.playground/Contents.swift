@@ -547,3 +547,39 @@ for ((key), value) in greeting {  // var 2
 // greeting for soldier : petrov, - zdraviya zhelayu tov kapitan!!
 // greeting for soldier : ivanov, - zdraviya zhelayu tov mayor!!
 
+
+// AIRPORTS
+    
+var airports = ["KUY": "Kyiev", "PRA": "Praha", "MOS": "Moscow"]
+print("The airports dictiomary contints \(airports.count) items")
+
+if airports.isEmpty {
+    print("The airports dictionary is empty")
+} else {
+    print("airports dictionary hss \(airports.count) items")
+}
+airports["LON"] = "London"
+airports
+
+if let oldValue = airports.updateValue("KKKKK", forKey: "KUY") { // changed value Kiev to KKKKK
+print("\(oldValue)")
+}
+if let airportName = airports["MOS"] {
+    print("The name of airport is - \(airportName)")
+}
+airports["SSS"] = "sss international" // appending
+airports["SSS"] = nil // removing with nil
+if let removeValue = airports.removeValue(forKey: "MOS") {
+    print("airport \(removeValue) deleted") // removing with .removeValue
+}
+
+for (airportCode, airportName) in airports { // iteration on airprts
+    print("the code of \(airportName) is \(airportCode)")
+}
+for keys in airports.keys {
+    print(keys)
+}
+
+for values in airports.values {
+    print(values)
+}    
