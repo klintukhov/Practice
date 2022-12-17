@@ -1014,3 +1014,73 @@ case let (name, age):                               // value banding
 default:
     print("incorrect date")
 }
+    
+      "If else switch break==================================================================================================="
+    
+    
+    for i in 0...200 {
+    if i == 15 {
+        break
+    }
+    print(i)
+}
+ 
+var day = 7
+/*
+if day == 1 {
+    print("work day")
+} else if day == 2 {
+    print("work day")
+} else if day == 3 {
+    print("work day")
+} else if day == 4 {
+    print("work day")
+} else if day == 5 {
+    print("today is friday")
+} else if day == 6 {
+    print("weekand")
+} else if day == 7 {
+    print("weekand")
+}
+*/
+switch day {
+case 1...4:
+    print("work day")
+case 5:
+    print("work day, Friday")
+case 6:
+    print("weekend Saturday")
+case 7:
+    print("weekand Sunday")
+default:
+    break
+}
+        
+for i in 0...200  {
+    if i == 15 {
+     print(i)
+    } else if i == 200 {
+        print(i)
+        break
+    }
+}
+
+
+let nameWork = "Swift dev"
+let age = 1205
+let peopleSex = "M"
+
+switch (nameWork, age) {
+case (_, 1...17):
+    print("sorry, you are tio young")
+case ("Swift dev", 18...50) where peopleSex == "W":
+    print("sorry, but all positions for women are occupied")
+case ("Swift dev", 18...50) where peopleSex == "M":
+print("thats all right")
+case (_, 130..<Int.max):
+    print("Hello Dunkan MClaud, you have a job!!!")
+case let (name, age):                               // value banding
+    print("\(name), in \(age) year, really?")
+default:
+    print("incorrect date")
+}
