@@ -1230,6 +1230,88 @@ func generalFunc(answer: Bool) -> () -> String {
     }
     
     return answer ?  sayYes : sayNo // ternarnuy operator
+    
+    // v4
+
+// Функции без параметров
+
+func sayHelloWorld() -> String {
+    return "hello, world"
+}
+print(sayHelloWorld())
+// Выведет "hello, world"
+
+
+
+
+func greet(person: String) -> String {
+    let greeting = "Привет, " + person + "!"
+    return greeting
+}
+
+print(greet(person: "Anna"))
+// Выведет "Привет, Anna!"
+print(greet(person: "Brian"))
+// Выведет "Привет, Brian!"
+
+
+func greetAgain(person: String) -> String {
+    return "Hello again, " + person + "!"
+}
+print(greetAgain(person: "Anna"))
+// Выведет "Hello again, Anna!"
+
+
+// v5  Эта функция принимает два параметра: имя человека и булево значение, приветствовали ли его уже, и возвращает соответствующее приветствие для этого человека:
+
+func greet(person: String, alreadyGreeted: Bool) -> String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greet(person: person)
+    }
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+// Выведет "Hello again, Tim!"
+
+
+// Функции, возвращающие несколько значений
+func miinMax(array: [Int]) -> (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+
+
+// Функция minMax(array:) возвращает кортеж из двух значений типа Int. Этим значениям присвоены имена min и max, чтобы к ним можно было обращаться при запросе возвращаемого типа функции.
+
+let bounds = miinMax(array: [8, -6, 2, 109, 3, 71])
+print("min is \(bounds.min) and max is \(bounds.max)")
+// Выведет "min is -6 and max is 109"
+
+//Функция minMax(array:) выше возвращает кортеж из двух значений типа Int, однако не проверяет корректность передаваемого массива.
+
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
 }
 
 // 1) Создать 3 функции:
