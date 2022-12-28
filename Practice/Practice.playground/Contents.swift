@@ -400,6 +400,18 @@ for (animalName, legCount) in numberOfLegs {
     print("\(animalName)s have \(legCount) legs")
 }
 
+//  
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+ print("Person \(i + 1) будет \(names[i])")
+}
+// Person 1 будет Anna
+// Person 2 будет Alex
+// Person 3 будет Brian
+// Person 4 будет Jack
+
 
 // Dictionary
 
