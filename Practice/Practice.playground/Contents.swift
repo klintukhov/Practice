@@ -1458,5 +1458,122 @@ for i in arrayNumbers {
     print(element)
 }
 
+      """Clothers
+   ================================================================================================================
+   ================================================================================================================
+   ===============================================================================================================
+   Clothers"""
+    
+import UIKit
 
+var str = "Hello, playground"
+
+
+let names = ["Oleh", "Ihor", "Pavel", "Andrey"]
+names.sorted()
+// v1
+names.sorted {(s1: String, s2: String) -> Bool in
+    return s1 < s2 }
+// v2
+names.sorted {(s1, s2 ) in return s1 < s2}
+// v3
+let t1 = names.sorted {(s1, s2) in s2.count < s1.count }
+print(t1)
+
+
+// avtomaticheskie imena argumentov
+
+let t2 = names.sorted(by: {$0 > $1})
+print(t2)
+let t3 = names.sorted(by: {$0 < $1})
+print(t3)
+
+let t4 = names.sorted(by: {$0.count > $1.count})
+print(t4)
+
+// Zahvat znacheniy
+
+func makeTranslator(Stroka: String) -> (String) -> (String) {
+    return { (name: String) -> String in return (Stroka + " " + name)}
+}
+var englishGreet = makeTranslator(Stroka: "Hello")
+englishGreet("John")
+var rusGreet = makeTranslator(Stroka: "Privet")
+rusGreet("Ivan")
+
+
+
+//6) Написать функцию, которая принимает пустые массивы(один строковый, второй - числовой) и проверяет их: если пустой - то добавить значения и вывести в консоль.
+//2) Написать 10 своих замыканий на примере сортировок массивов.
+//3) Написать функцию, которая принимает массив, проверяет — пустой или нет. И если пустой — нужно записать туда значения.
+//4) Написать функцию - сайт который требует имя, фамилию, ник, емейл, пароль. Всё вывести в консоль.
+//5) Написать функции которые принимают в качестве аргументов массивы и словари и проверяют: пустые или нет. Если пустые — добавляют туда значения и выводят в консоль.
+
+
+// 1) Написать сортировку массива с помощью замыкания, сначала в одну сторону, затем в другую.Вывести всё в консоль.
+
+var carsArray = ["A", "B", "C", "D", "e", "F"]
+let sortCarsOne = carsArray.sorted(by: {$0 < $1})
+print(sortCarsOne)
+let sortCarsTwo = carsArray.sorted(by: {$0 > $1})
+print(sortCarsTwo)
+
+
+// 2) Создать метод который запрашивает имена друзей, после этого имена положить в массив. Массив отсортировать по количеству букв в имени.
+
+var friendsNames = [String]()
+
+func friendsAdd(name: String) {
+    friendsNames.append(name)
+}
+friendsAdd(name: "Johny")
+friendsAdd(name: "Jack")
+friendsAdd(name: "Elizabeth")
+friendsAdd(name: "Bob")
+
+let sortNamesUp = friendsNames.sorted(by: {$0.count > $1.count})
+print(sortNamesUp)
+
+let sortNamesDown = friendsNames.sorted(by: {$0.count < $1.count})
+print(sortNamesDown)
+
+
+// 3) Написать функцию которая будет принимать ключи, выводить ключи и значения словаря (Dictionary). Тип ключа и значения выбирайте сами.
+
+var marks2 = [5 : "John", 4 : "Bobby"]
+
+var marks = [Int : String]()
+
+func showMark(mark: Int, name: String) -> [Int:String] {
+    
+    var markKey = [mark : name]
+    for mark in markKey {
+        print(mark)
+    }
+    return markKey
+}
+
+showMark(mark: 4, name: "John")
+
+// 4) Написать функцию, которая принимает пустые массивы(один строковый, второй - числовой) и проверяет их: если пустой - то добавить значения и вывести в консоль.
+
+
+var arrayInt = [Int]()
+var arrayStr = [String]()
+
+
+func addArray(arrayI: [Int], arrayS: [String]) {
+    if arrayInt.isEmpty  {
+        arrayInt = [1, 2, 3]
+    } else if arrayStr.isEmpty {
+        arrayStr = ["a", "c", "d"]
+    } else if arrayStr.isEmpty && arrayInt.isEmpty {
+        arrayInt = [1, 2, 3]
+        arrayStr = ["a", "c", "d"]
+
+
+    }
+}
+
+addArray(arrayI: arrayInt, arrayS: arrayStr)
 
