@@ -1503,13 +1503,6 @@ rusGreet("Ivan")
 
 
 
-//6) Написать функцию, которая принимает пустые массивы(один строковый, второй - числовой) и проверяет их: если пустой - то добавить значения и вывести в консоль.
-//2) Написать 10 своих замыканий на примере сортировок массивов.
-//3) Написать функцию, которая принимает массив, проверяет — пустой или нет. И если пустой — нужно записать туда значения.
-//4) Написать функцию - сайт который требует имя, фамилию, ник, емейл, пароль. Всё вывести в консоль.
-//5) Написать функции которые принимают в качестве аргументов массивы и словари и проверяют: пустые или нет. Если пустые — добавляют туда значения и выводят в консоль.
-
-
 // 1) Написать сортировку массива с помощью замыкания, сначала в одну сторону, затем в другую.Вывести всё в консоль.
 
 var carsArray = ["A", "B", "C", "D", "e", "F"]
@@ -1540,40 +1533,126 @@ print(sortNamesDown)
 
 // 3) Написать функцию которая будет принимать ключи, выводить ключи и значения словаря (Dictionary). Тип ключа и значения выбирайте сами.
 
-var marks2 = [5 : "John", 4 : "Bobby"]
 
-var marks = [Int : String]()
+var marks = [2 : "number two", 3 : "number three"]
 
-func showMark(mark: Int, name: String) -> [Int:String] {
+func showMark(keyDict: Int ) -> [Int:String] {
     
-    var markKey = [mark : name]
-    for mark in markKey {
-        print(mark)
+    let keyDict = marks
+    for elements in marks {
+        print(marks.keys)
     }
-    return markKey
+    return marks
 }
 
-showMark(mark: 4, name: "John")
+print(showMark(keyDict: 2))
 
 // 4) Написать функцию, которая принимает пустые массивы(один строковый, второй - числовой) и проверяет их: если пустой - то добавить значения и вывести в консоль.
 
 
-var arrayInt = [Int]()
+var arrayInt = [2]
 var arrayStr = [String]()
 
 
 func addArray(arrayI: [Int], arrayS: [String]) {
-    if arrayInt.isEmpty  {
-        arrayInt = [1, 2, 3]
-    } else if arrayStr.isEmpty {
-        arrayStr = ["a", "c", "d"]
-    } else if arrayStr.isEmpty && arrayInt.isEmpty {
-        arrayInt = [1, 2, 3]
-        arrayStr = ["a", "c", "d"]
+    
+    if arrayInt.isEmpty {
+        arrayInt.append(3)
+    }
+    if    arrayStr.isEmpty {
+        arrayStr.append(contentsOf: ["a", "c"])
+    }
+}
+addArray(arrayI: arrayInt, arrayS: arrayStr)
+(addArray(arrayI: arrayInt, arrayS: arrayStr))
+print(arrayInt)
+print(arrayStr)
 
 
+//5) Написать 10 своих замыканий на примере сортировок массивов.
+
+let closNames = ["Oleh", "Ihor", "Pavel", "Andrey"]
+let sortedOne = closNames.sorted(by: {$0 > $1})
+print(sortedOne)
+
+let sortedTwo = closNames.sorted(by: {$0 < $1})
+print(sortedTwo)
+
+let sortedThree = names.sorted(by: {$0.count > $1.count})
+print(sortedThree)
+
+let sortedFour = names.sorted(by: {$0.count < $1.count})
+print(sortedFour)
+
+let arrayNumb = [2, 3, 1, 6, 5, 8, 4]
+var arrayNumbOne = arrayNumb.sorted(by: <)
+var arrayNumbTwo = arrayNumb.sorted(by: >)
+
+func arraySort(n1 : Int, n2: Int) -> Bool {
+    return n1 < n2
+}
+
+var sortX = arrayNumb.sorted(by: arraySort)
+
+
+//6) Написать функцию, которая принимает массив, проверяет — пустой или нет. И если пустой — нужно записать туда значения.
+
+
+var newArray = [1,2,4]
+
+func elemArray(myArray: [Int]) {
+    if newArray.isEmpty {
+        newArray.append(1)
+    } else {
+        print("array \(newArray) is not empty")
+    }
+}
+elemArray(myArray: newArray)
+print(newArray)
+
+
+//7) Написать функцию - сайт который требует имя, фамилию, ник, емейл, пароль. Всё вывести в консоль.
+
+func webDates (name: String, surname: String, nick: String, email: String, password: String)  {
+    print(name)
+    print(surname)
+    print(nick)
+    print(email)
+    print(password)
+}
+
+var web = webDates(name: "Ihor", surname: "Solovjev", nick: "Solovej", email: "solovey@gmail.com", password: "2342ddeew")
+
+
+//8) Написать функции которые принимают в качестве аргументов массивы и словари и проверяют: пустые или нет. Если пустые — добавляют туда значения и выводят в консоль.
+
+var arrayEx = [Int]()
+var dictEx = [String:String]()
+
+func addArray(array: [Int]) {
+    if arrayEx.isEmpty {
+        arrayEx.append(55)
+    } else {
+        print("array is not empty")
     }
 }
 
-addArray(arrayI: arrayInt, arrayS: arrayStr)
+func addDictionary(dict: [String : String]) {
+    if dictEx.isEmpty {
+        dictEx["Macbook"] = "MacOS"
+    } else {
+        print("dictionary is not empty")
+        
+    }
+}
+
+addArray(array: arrayEx)
+arrayEx
+
+addDictionary(dict: dictEx)
+dictEx
+print("for empty dictionary added next values \(dictEx)")
+
+
+
 
