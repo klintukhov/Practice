@@ -1662,6 +1662,10 @@ print("for empty dictionary added next values \(dictEx)")
    ===============================================================================================================
    Enums"""
 
+import UIKit
+
+var str = "Hello, playground"
+
 enum travelClass {
     case first, business, economy
 }
@@ -1689,7 +1693,7 @@ case .bronse:
 
 // Week days
 
-enum weekDay {
+enum WeekDay {
     case monday
     case tuesday
     case wednesday
@@ -1700,7 +1704,7 @@ enum weekDay {
     case friday
 }
 
-var thursday = weekDay.thursday.night
+var thursday = WeekDay.thursday.night
 
 
 enum Operation {
@@ -1710,7 +1714,7 @@ enum Operation {
     case string (String)
 }
 
-var dictionary: Dictionary <String, Operation> = [
+let dictionary: Dictionary <String, Operation> = [
     "Integer" : Operation.integer(3),
     "Float" : Operation.float(3.4444),
     "Double" : Operation.doble(4.5),
@@ -1719,29 +1723,6 @@ var dictionary: Dictionary <String, Operation> = [
 
 let value = dictionary["Integer"]
 print(value!)
-
-
-//7) Создать программу, которая "рассказывает" - какие автомобили стоят в гараже.
-
-
-
-//1) Напишите как понимаете enumerations:что это такое, в чем их смысл, зачем нужны. Ваше личное мнение: как и где их можно использовать?
-//2) Написать по 5-10 enum разных типов + создать как можно больше своих enumerations. Главное, соблюдайте правила написания: понятность и заглавная буква в начале названия. Пропустите их через switch и распечатайте (см.видео).
-//3) Создайте своё резюме с использованием enum: имя, фамилия, возраст, профессия, навыки, образование, хобби и т.д. - пункты на ваше усмотрение.
-//Пропустите ваше резюме сначала через if else, затем через switch — для того, чтобы было понимание читаемости и красоты кода.
-//Дайте свою оценку первому и второму варианту написания.
-//4) Представьте, что вы попали на завод Apple. Вам принесли MacBook, Iphone, Ipad, Apple Watch и сказали: «Раскрась их в разные цвета. Джони Айву нужно вдохновение».
-//Вы подвисли и начали раскрашивать. В итоге у вас получился красный MacBook, зеленый Ipad, розовый Iphone и буро-коричневый Apple Watch.
-//Инструкция: для цветов задаём через enumeration. Наши девайсы располагаем в теле функции.
-//Итог программы: «Айфон — розовый».
-
-
-
-
-
-
-
-
 
 
 // 1) Создайте по 1-2 enum разных типов.
@@ -1763,7 +1744,7 @@ enum AutoParts {
     case engine(String)
 }
 
-var parametersParts: Dictionary <String, AutoParts> = [
+let parametersParts: Dictionary <String, AutoParts> = [
     "Door" : AutoParts.door(4),
     "wheel": AutoParts.wheel(4),
     "engine" : AutoParts.engine("Gasoline")
@@ -1828,7 +1809,7 @@ enum Colors {
     case viloet
 }
 
-var nature = ["tree", "sky", "grass", "flower", "dusk", "orange" ]
+let nature = ["tree", "sky", "grass", "flower", "dusk", "orange" ]
 
 func colorsOfNature (color: Colors) {
     switch color {
@@ -1884,6 +1865,115 @@ func whatMark(Mark: Mark) {
 whatMark(Mark: .five)
 whatMark(Mark: .four)
 whatMark(Mark: .three)
+
+
+// 5) Создать программу, которая "рассказывает" - какие автомобили стоят в гараже.
+
+
+enum Cars {
+    case lada
+    case moskvich
+    case volga
+    case zaz
+}
+
+func carsInGarage(CarInfo: Cars) {
+    switch CarInfo {
+    case .lada:
+        print("in the garage there is \(Cars.lada)")
+    case .moskvich:
+        print("in the garage there is \(Cars.moskvich)")
+    case .volga:
+        print("in the garage there is \(Cars.volga)")
+    case .zaz:
+        print("in the garage there is \(Cars.volga)")
+        }
+    }
+
+
+carsInGarage(CarInfo: .lada)
+carsInGarage(CarInfo: .moskvich)
+carsInGarage(CarInfo: .volga)
+
+
+//8) Создайте своё резюме с использованием enum: имя, фамилия, возраст, профессия, навыки, образование, хобби и т.д. - пункты на ваше усмотрение.
+
+enum Reusume: String {
+    case name = "Ivan"
+    case surname = "Kovalev"
+    case age = "45"
+    case profession = "Driver"
+    case education = "Economost"
+    case hobby = "Football"
+        }
+
+let myResume = """
+hello my name is \(Reusume.name.rawValue) \(Reusume.surname.rawValue),
+I'am \(Reusume.age.rawValue) and my profession is \(Reusume.profession.rawValue).
+My education is \(Reusume.education.rawValue) and my hobby is \(Reusume.hobby.rawValue)
+"""
+print(myResume)
+
+//9) Создайте своё резюме с использованием enum: имя, фамилия, возраст, профессия, навыки, образование, хобби и т.д. - пункты на ваше усмотрение.
+//Пропустите ваше резюме сначала через if else, затем через switch — для того, чтобы было понимание читаемости и красоты кода.
+
+enum personDates{
+    case name
+    case surname
+    case age
+    case profession
+    case hobby
+}
+
+var infoPerson = personDates.name
+
+    
+switch infoPerson {
+case .name:
+    print("Name of person is Stepan")
+case .surname:
+    print("Surname of person is Ivanov")
+case .age:
+    print(40)
+case .profession:
+    print("Builder")
+case .hobby:
+    print("Hockey")
+
+}
+
+personDates.name
+personDates.surname
+
+//10) Представьте, что вы попали на завод Apple. Вам принесли MacBook, Iphone, Ipad, Apple Watch и сказали: «Раскрась их в разные цвета. Джони Айву нужно вдохновение».
+//Вы подвисли и начали раскрашивать. В итоге у вас получился красный MacBook, зеленый Ipad, розовый Iphone и буро-коричневый Apple Watch.
+//Инструкция: для цветов задаём через enumeration. Наши девайсы располагаем в теле функции.
+//Итог программы: «Айфон — розовый».
+
+
+enum DeviceColors {
+    case red
+    case green
+    case pink
+    case brown
+}
+let prepare = DeviceColors.red
+
+func prepare(color: DeviceColors) {
+    switch color {
+    case .red :
+        print("the color of your Macbook is \(DeviceColors.red)")
+    case .green :
+        print("the color of your IPad is \(DeviceColors.green)")
+    case .pink:
+        print("the color of your Iphone is \(DeviceColors.pink)")
+    case .brown:
+        print("the color of your Apple watch is \(DeviceColors.brown)")
+    }
+}
+
+prepare(color: .pink)
+prepare(color: .red)
 
 
 
