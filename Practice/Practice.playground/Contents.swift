@@ -1981,7 +1981,7 @@ prepare(color: .red)
    ===============================================================================================================
    CLASSES. STRUCTURES"""
     
-  import UIKit
+ import UIKit
 
 class ParentsClass  {
     var array = [String] ()
@@ -2070,11 +2070,6 @@ for player in players {
     print("Name of player is \(player.name) own score: \(player.level)")
 }
 
-
-
-
-
-
 // 3) Написать программу, в которой создать класс *House* в нем несколько свойств - *width*, *height* и несколько методов - *create*(выводит произведение свойств),*destroy*(отображает что дом уничтожен)и т.п.
 
 class House {
@@ -2109,43 +2104,61 @@ print(newHouse)
 newHouse.build(building: newHouse)
 newHouse.destroyBuild(destroying: newHouse)
 
+
 //4) Создайте класс с методами, которые сортируют массив учеников.
 
-
-var students = ["Alex", "Semen", "Zhanna", "Illia", "Sergey"]
-
 class Sorting {
-        
-    func sortingStudentsUp(array: [String]) {
-        array.sorted {$0 < $1}
+    
+    var arrayToSort = [String]()
+    
+    init (arrayToSort: [String]) {
+        self.arrayToSort = arrayToSort
     }
-    func sortingStudentsDown(array: [String]) {
-        var arrayStud = [String]()
+    func sortingStudentsUp(array: [String]) -> [String] {
+        array.sorted {$0 < $1}
+        return array.sorted {$0 < $1}
+        
+    }
+    func sortingStudentsDown(array: [String]) -> [String] {
         array.sorted {$0 > $1}
+        return array.sorted {$0 > $1}
     }
 }
-var sortedComplete = Sorting()
-sortedComplete.sortingStudentsUp(array: students)
+
+var students = ["Alex", "Semen", "Zhanna", "Illia", "Sergey"]
+var sortArr = Sorting(arrayToSort: students)
+
+sortArr.sortingStudentsUp(array: students)
+sortArr.sortingStudentsDown(array: students)
 
 
 //5) Написать свою структуру и пояснить в комментариях - чем отличаются структуры от классов.
 
-struct Transport {
-    let plane = "Airbus"
-    let car = "Mercedes"
-    let moto = "Honda"
+// Classes gives just a link on some class, & needed initialization.
+// Structs giving not just a link on parent class, and it giving value of structure object, don't need initialization.
+
+struct Kodeks {
+    var razdel: String
+    var statia: Int
+    
+    func prinStatia()  {
+        print(razdel, statia)
+        
     }
     
+    init (razdel: String, statia: Int){
+        self.razdel = razdel
+        self.statia = statia
+    }
+}
 
+var number = Kodeks(razdel: "Admin", statia: 23)
+number.prinStatia()
+var numberTwo = Kodeks(razdel: "Kriminal", statia: 244)
+numberTwo.prinStatia()
 
-
-
-
-
-
-
-
-
+print(number)
+print(numberTwo)
 
 //Дополнительно(на закрепление всех пройденных тем):
 //Напишите простую программу, которая называет комбинации в покере.
@@ -2159,10 +2172,83 @@ struct Transport {
 //- В зависимости от комбинации - в консоли печатаем тот или иной ответ.
 //- Комбинации можно взять отсюда:
 //http://www.russiapokernews.com/poker-hand-ranking
+// Royal flush. A, K, Q, J, 10, all the same suit. ...
+//Four of a kind. All four cards of the same rank.
+//Full house. Three of a kind with a pair.
+//Flush. Any five cards of the same suit, but not in a sequence.
+//Straight. ...
+//Three of a kind. ...
+//Two pair. ...
+//Pair.
+
+
+
+
+struct PokerGame {
+    
+    
+    
+    let comboSuit = ["Royal flush", "Four of a kind", "Full house", "Flush","Straight","Three of a kind", "Two pair", "Pair"]
+    
+    
+    enum Suits: String {
+        case chirva = "A, K, Q, J, 10, all the same suit"
+        case kresta = "All four cards of the same rank"
+        case bubna = "Three of a kind with a pair"
+        case Pika = "Any five cards of the same suit, but not in a sequence"
+    }
+    
+}
+
 //3) Написать класс , а в нем метод который будет принимать букву (одну, может быть и типа string, просто будете передавать ему одну букву) и возвращать все имена которые начинаются на эту букву.
 //К примеру, А - Алексей, Александр, Артем, Антон и т. д. Внутри метода или полем класса (тут как удобно, не сильно критично) будет задаваться массив строк (string) в котором будут прописаны имена. Имена откуда-то подгружать не надо, их надо просто захардкодить. Метод должен возвращать отфильтрованный массив с именами.
+
+class FilterNames {
+    
+    var nameArray = [String]()
+    var letter: String = String()
+    
+    init(nameArray: [String]) {
+        self.nameArray = nameArray
+    }
+    init(letter: String) {
+        self.letter = letter
+    }
+    
+    func filtrtion(nameArray: [String]) -> [String] {
+        var names = nameArray.filter{nameArray in nameArray.first == "A"}
+        return nameArray.filter{nameArray in nameArray.first == "A"}
+    }
+}
+
+var filteredArray = FilterNames(letter: "C")
+var testArray = ["Andrey", "Boris", "Anton"]
+filteredArray.filtrtion(nameArray: testArray)
+
 //Так же написать метод, который будет принимать массив строк как аргумент и выводить их всех на консоль с новой строки каждое имя. Им распечатаете на консоль то что у вас получилось отфильтровать.
-  
+
+
+class PrintName {
+    
+    
+    init (namesList: [String]) {
+        self.namesList = namesList
+    }
+    let namesList: [String]
+    
+    func forNames(namesList: [String]) {
+        
+        
+        for name in namesList {
+            print(name)
+        }
+    }
+}
+var myArray = ["e", "t", "f", "d"]
+
+var testingArray = PrintName(namesList: myArray)
+testingArray.forNames(namesList: myArray)
+
     
     
     
