@@ -2249,7 +2249,77 @@ var myArray = ["e", "t", "f", "d"]
 var testingArray = PrintName(namesList: myArray)
 testingArray.forNames(namesList: myArray)
 
+
+     """
+    PROPERTIES
+    SVOYSTVA
+   ================================================================================================================
+   ================================================================================================================
+   ===============================================================================================================
+   PROPERTIES 
+   SVOTSTVA
+    """
     
+    import UIKit
+
+
+struct Observer {
+    
+    var name: String {
+        
+        willSet {
+            print("new value wants to be" + " = " + newValue)
+        }
+        didSet {
+            print("didset" + " = " + oldValue )
+            
+        }
+    }
+    
+}
+
+var obserb = Observer(name: "John")
+obserb.name // getter - vuzov svoystva
+
+obserb.name = "Ivan" // setter - izmenenije svoystva
+
+print(obserb.name )
+
+
+// practice from Swift book
+
+struct Resolution {
+    
+    var width = 0
+    var high = 0
+    
+}
+
+class VideoMode {
+    var resolution = Resolution()
+    var interlased = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+
+print("The some resolution of videomode \(someResolution.width)")
+
+print("The width of some video mode is \(someVideoMode.resolution.width)")
+someVideoMode.resolution.width = 125
+print(someVideoMode.resolution.width)
+
+var vga = Resolution(width: 640, high: 480)
+print(vga)
+
+let hd = Resolution(width: 1920, high: 1000)
+
+var cinema = hd
+cinema.width = 2048
+
+print("The hd width now is \(hd.width), and the cinema width is \(cinema.width)")
     
     
     
