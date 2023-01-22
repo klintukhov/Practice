@@ -878,60 +878,7 @@ for values in airports.values {
     
   "If else switch break====================================================================================================================="
     
-    
-    
-    
-    
 
- 
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@klintukhov 
-klintukhov
-/
-basicSWIFT
-Public
-Pin
- Unwatch 1 
-Fork 0
- Star 0
-Code
-Issues
-Pull requests
-6
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Edit
- Code
-lesson 8 complete #6
- Open
-klintukhov wants to merge 1 commit into main from lesson-8-if-else-for-break
-+240 −1 
- Conversation 0
- Commits 1
- Checks 0
- Files changed 1
-Changes from all commits 
-File filter  
-Conversations 
-Jump to 
- 
-0 / 1 files viewed
-Review changes 
- 241  
-basicSwift.playground/Contents.swift
- Viewed
-
-@@ -1,3 +1,242 @@
- import UIKit
 
  var str = "Hello, playground"
  for i in 0...200 {
@@ -1182,12 +1129,8 @@ basicSwift.playground/Contents.swift
    Functions"""
     
     
-    
-    
-  import UIKit
-
 func sayHi() {
-    print("Hi")
+print("Hi")
 }
 // v1
 var arrayJournal = [String]()
