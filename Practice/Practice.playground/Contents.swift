@@ -2203,9 +2203,6 @@ testingArray.forNames(namesList: myArray)
    SVOTSTVA
     """
     
-    import UIKit
-
-
 struct Observer {
     
     var name: String {
@@ -2215,6 +2212,9 @@ struct Observer {
         }
         didSet {
             print("didset" + " = " + oldValue )
+            if name != "" {
+                name = name.capitalized
+            }
             
         }
     }
@@ -2224,9 +2224,46 @@ struct Observer {
 var obserb = Observer(name: "John")
 obserb.name // getter - vuzov svoystva
 
-obserb.name = "Ivan" // setter - izmenenije svoystva
+obserb.name = "iVan" // setter - izmenenije svoystva
 
 print(obserb.name )
+
+struct ComputerProperty {
+    
+    var firstName: String {
+        didSet {
+            if firstName != "" {
+                firstName = firstName.capitalized
+            }
+        }
+    }
+    var lastName: String {
+        didSet  {
+            if lastName != "" {
+                lastName = lastName.capitalized
+            }
+        }
+    }
+    
+    var fullName: String {
+        get {
+            return firstName + " " + lastName
+        }
+        set {
+            print("setter value is" + " " + newValue )
+        }
+    }
+}
+
+var compProp = ComputerProperty(firstName: "joHN", lastName: "weEK")
+compProp.fullName
+
+
+compProp.firstName = "jiM"
+compProp.lastName = "weeeK"
+print(compProp.fullName)
+compProp.fullName
+
 
 
 // practice from Swift book
