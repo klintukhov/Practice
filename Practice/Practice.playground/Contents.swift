@@ -2203,6 +2203,8 @@ testingArray.forNames(namesList: myArray)
    SVOTSTVA
     """
     
+import UIKit
+
 struct Observer {
     
     var name: String {
@@ -2228,41 +2230,11 @@ obserb.name = "iVan" // setter - izmenenije svoystva
 
 print(obserb.name )
 
-struct ComputerProperty {
-    
-    var firstName: String {
-        didSet {
-            if firstName != "" {
-                firstName = firstName.capitalized
-            }
-        }
-    }
-    var lastName: String {
-        didSet  {
-            if lastName != "" {
-                lastName = lastName.capitalized
-            }
-        }
-    }
-    
-    var fullName: String {
-        get {
-            return firstName + " " + lastName
-        }
-        set {
-            print("setter value is" + " " + newValue )
-        }
-    }
-}
-
-var compProp = ComputerProperty(firstName: "joHN", lastName: "weEK")
-compProp.fullName
 
 
-compProp.firstName = "jiM"
-compProp.lastName = "weeeK"
-print(compProp.fullName)
-compProp.fullName
+
+
+
 
 
 
@@ -2300,7 +2272,140 @@ var cinema = hd
 cinema.width = 2048
 
 print("The hd width now is \(hd.width), and the cinema width is \(cinema.width)")
+
+// v4
+
+var str = "Type Properties"
+
+let MaxLenghth = 15
+
+struct MyStruct {
     
+    static var count = 0
+    var name: String {
+        didSet {
+            if name.count > MaxLenghth {
+                name = oldValue
+            }
+        }
+    }
+    init(name: String) {
+        self.name = name
+        MyStruct.count += 1
+    }
+}
+
+var struct1 = MyStruct(name: "Ivan")
+struct1.name = "cccscscscscasxasxasxsc"
+print(struct1.name)
+var struct2 = MyStruct(name: "Seman")
+
+print(MyStruct.count)
+
+struct1
+
+class AgeBoy {
+    static var maxAge = 8
+    
+    lazy var say = "Hello Iam OK)" // lenivaya peremennaya
+        
+    var name = String(){
+        didSet {
+            if name.count > MaxLenghth {
+                name = oldValue
+            }
+        }
+    }
+    
+    
+    
+    var age = 8 {
+        didSet {
+            if age > AgeBoy.maxAge {
+                age = oldValue
+                print("Enter please from 6 to 8 years")
+            }
+        }
+    }
+}
+
+
+var ageClass = AgeBoy()
+ageClass.name = "Ivan"
+ageClass.age = 20
+ageClass.say
+
+
+
+struct ComputerProperty {
+    
+    var firstName: String {
+        didSet {
+            if firstName != "" {
+                firstName = firstName.capitalized
+            }
+        }
+    }
+    var lastName: String {
+        didSet  {
+            if lastName != "" {
+                lastName = lastName.capitalized
+            }
+        }
+    }
+    
+    var fullName: String {
+        get {
+            return firstName + " " + lastName
+        }
+        set {
+            print("setter value is" + " " + newValue )
+        }
+    }
+}
+
+var compProp = ComputerProperty(firstName: "joHN", lastName: "weEK")
+compProp.fullName
+
+
+compProp.firstName = "jiM"
+compProp.lastName = "weeeK"
+print(compProp.fullName)
+compProp.fullName
+
+//3. Написать структуру "CreateTriangle",с двумя свойствами - угол A,угол C.
+//И создать 2 вычисляемых свойства - те же угол А,угол С.
+//И если мы записываем значения в эти углы - результатом должно быть значение третьего угла.
+//Для простоты можно взять прямоугольный треугольник, сумма углов которого равна 180 градусов.
+
+
+
+
+struct CreateTriangle {
+    
+    let angelA = 90
+    let allAngels = 180
+    
+    var angelB: Int {
+        didSet {
+            if angelB < 1 {
+                print("enter correct data")
+            }
+            
+        }
+    }
+    var angleC: Int {
+        get {
+            return allAngels - angelA - angelB
+        }
+    }
+    
+}
+
+var valueC = CreateTriangle(angelB: 30)
+valueC.angleC
+print(valueC.angleC)
+
     
     
     
