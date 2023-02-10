@@ -2775,6 +2775,168 @@ dictionary["double"]
 dictionary["bool"]
 dictionary["float"]
 
+   
+ """
+   NASLEDOVANIJA
+   ================================================================================================================
+   ================================================================================================================
+   ===============================================================================================================
+   NASLEDOVANIJA    
+  """      
+    
+    
+class People {
+    var name = "John"
+    var surname = "Smith"
+    var fullNmae: String {
+        return name + "" + surname
+        
+    }
+    
+    func printMethod() -> String {
+        return ("Your name is - ")
+    }
+}
+
+class Man: People {
+    
+    override func printMethod() -> String {
+        return super.printMethod() + "Patrick"
+    }
+    
+    
+}
+
+let people = People()
+people.name
+let man = Man()
+man.name
+man.printMethod() // returned with override
+
+// INCAPSULATION  ===================================================
+
+class Boys  {
+    
+    private var firstname = "Bob" // private property
+    public var surname = "Johnson" // public property
+    
+    final func printHi() {
+        print("Hello" )
+        
+    }
+}
+
+class Girls: Boys{
+}
+
+let girls = Girls()
+
+// Polymorphysm ==================================
+
+class General {
+    var name = "AAA"
+    func methodHi() {
+        print("Hello General")
+    }
+}
+
+class People1: General {
+    
+    override func methodHi () {
+        print("Hi people1")
+    }
+}
+
+class People2: General {
+    
+    override func methodHi () {
+        print("Hi people2")
+    }
+}
+
+let general = General()
+let people1 =  People1()
+let people2 = People2()
+
+people2.name = "XXX"
+var array = [general, people1, people2]
+
+for obj in array {
+    print(obj.name)
+    obj.methodHi()
+}
+
+
+//1. Создать класс "люди", в этом классе 4 property - "имя", "рост", "вес", "пол", а также будет иметь метод "say(говорит)".
+
+class Human {
+    var name = "Semen"
+    var height = 180
+    var veight = 77
+    var sex = "M"
+    
+    func say() {
+        print("Hello to all!")
+    }
+    
+}
+
+//2. Создать sub class (наследники) "повар", "менеджер", "борец" и переопределить метод "say(говорит)" в каждом из этих классов.
+
+class Cock: Human {
+    override func say() {
+        print("Hello i'am a cock!")
+        
+    }
+}
+
+class Manager: Human {
+    override func say() {
+        print("Hello i'am a manager!")
+        
+    }
+}
+
+class Fighter: Human {
+    override func say() {
+        print("Hello i'am a fighter!")
+        
+    }
+}
+
+//3. Создать по одному объекту(экземпляру) каждого класса и объединить их в массив.
+
+var human = Human()
+var cock = Cock()
+var manager = Manager()
+var fighter = Fighter()
+
+var allHumans = [human, cock, manager, fighter]
+
+//4. В цикле “for in” пройти по всем элементам массива и вывести в консоль все характеристики каждого объекта (имя, рост и тд) и у каждого вызвать метод "say(говорит)".
+
+for human in allHumans {
+    
+    print(human.name)
+    print(human.height)
+    print(human.veight)
+    print(human.sex)
+    human.say()
+
+    }
+
+//5. Создать еще одного наследника от super Class, добавить в него пару новых свойств, добавить в массив и в цикле вывода вывести его свойства как дополнение к свойствам People.
+
+class NewHuman: Human {
+    
+     var skill = "hand walking"
+    
+}
+
+var newHuman = NewHuman()
+
+
+
     
     
     
