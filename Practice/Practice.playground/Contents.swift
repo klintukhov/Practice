@@ -2936,7 +2936,88 @@ class NewHuman: Human {
 var newHuman = NewHuman()
 
 
+ """
+   ARC Automatic Reference counting
+   ================================================================================================================
+   ================================================================================================================
+   ===============================================================================================================
+   ARC Automatic Reference counting
+    
+  """      
+    
+    
+    
+    
+    
+    
+import UIKit
 
+// ARC Automatic Reference counting
+
+class Person {
+    var name = String()
+    
+    init(name: String) {
+        self.name = name
+        print("\(name) initializated and created in memory ")
+    }
+    deinit {
+        print("\(name) deleted from memory ")
+    }
+}
+
+var ref1: Person?
+var ref2: Person?
+var ref3: Person?
+
+ref1 = Person(name: "Andrey")   // --->  Andrey initializated and created in memory
+ref2 = ref1
+ref3 = ref1
+
+ref1 = nil // dont delete
+ref2 = nil // dont delete
+ref3 = nil                      // ---> Andrey deleted from memory  !!!!
+
+// CUKL STRONG REFERENCES
+
+class Hotel {
+    
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    var apartament: Apartments?
+
+    deinit {
+        print("\(name) go out")
+    }
+
+}
+
+class Apartments {
+    
+    let room: String
+    
+    init(room: String) {
+        self.room = room
+    }
+    var hotel: Hotel?
+
+    deinit {
+        print("apartments \(room) is free for rent")
+    }
+}
+
+var objHotel: Hotel?
+var objApartaments:  Apartments?
+
+objHotel = Hotel(name: "Jack Smith")
+objApartaments = Apartments(room: "33")
+
+objHotel!.apartament = objApartaments
+objApartaments!.hotel = objHotel
+    
     
     
     
