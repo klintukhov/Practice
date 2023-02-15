@@ -2785,6 +2785,8 @@ dictionary["float"]
   """      
     
     
+import UIKit
+
 class People {
     var name = "John"
     var surname = "Smith"
@@ -2847,12 +2849,14 @@ class People1: General {
     }
 }
 
+
 class People2: General {
     
     override func methodHi () {
         print("Hi people2")
     }
 }
+
 
 let general = General()
 let people1 =  People1()
@@ -2875,65 +2879,161 @@ class Human {
     var veight = 77
     var sex = "M"
     
-    func say() {
-        print("Hello to all!")
+    func say() -> String{
+        return ("Hello to all!")
     }
     
 }
 
 //2. Создать sub class (наследники) "повар", "менеджер", "борец" и переопределить метод "say(говорит)" в каждом из этих классов.
 
-class Cock: Human {
-    override func say() {
-        print("Hello i'am a cock!")
+class Cock: Human  {
+    override func say() -> String {
+        return ("Hello i'am a cock!")
         
     }
 }
+
+
 
 class Manager: Human {
-    override func say() {
-        print("Hello i'am a manager!")
+    
+    override func say() -> String {
+        return ("Hello i'am a manager!")
+    }
+}
+
+
+class Fighter: Human {
+    override func say() -> String {
+        return ("Hello i'am a fighter!")
         
     }
 }
 
-class Fighter: Human {
-    override func say() {
-        print("Hello i'am a fighter!")
-        
-    }
-}
 
 //3. Создать по одному объекту(экземпляру) каждого класса и объединить их в массив.
 
 var human = Human()
 var cock = Cock()
+cock.name = "Andrey"
 var manager = Manager()
-var fighter = Fighter()
+manager.name = "Oleg"
 
-var allHumans = [human, cock, manager, fighter]
+var fighter = Fighter()
+fighter.name = "Yaroslav"
+
+var humans = [human, cock, manager, fighter]
 
 //4. В цикле “for in” пройти по всем элементам массива и вывести в консоль все характеристики каждого объекта (имя, рост и тд) и у каждого вызвать метод "say(говорит)".
 
-for human in allHumans {
+for human in humans {
     
-    print(human.name)
-    print(human.height)
-    print(human.veight)
-    print(human.sex)
+    print(human.name, human.height, human.veight, human.sex, human.say())
     human.say()
-
-    }
-
-//5. Создать еще одного наследника от super Class, добавить в него пару новых свойств, добавить в массив и в цикле вывода вывести его свойства как дополнение к свойствам People.
-
-class NewHuman: Human {
-    
-     var skill = "hand walking"
     
 }
 
+//5. Создать еще одного наследника от super Class, добавить в него пару новых свойств, добавить в массив и в цикле вывода вывести его свойства как дополнение к свойствам People.
+//6. Метод "say(говорит)" реализовать таким образом, чтобы перед тем как выполнить собственный method say, выполнялся сначала метод say класса People.
+
+
+class NewHuman: Human {
+    
+    var tatoo = true
+    var skill = "hand walking"
+    
+    override func say() -> String {
+        return (super.say() + " " + "I have a new tatoo!")
+        
+    }
+}
+
+
 var newHuman = NewHuman()
+
+
+humans.append(newHuman)
+humans
+
+for human in humans {
+    newHuman.skill
+}
+newHuman.say()
+
+//7. Вывести все это в обратном порядке(Google в помощь).
+
+
+// Pereproverit'
+var reversedArraay = humans.enumerated().reversed()
+
+for (_, value) in reversedArraay {
+    
+    print(value.name)
+}
+
+
+//8. Создать класс "Марсианин" (не наследник класса people!) со своими собственными property (отличными от people) и методом "say" (отличным от people).
+
+class Marsian {
+    
+    var name: String
+    var colour: String
+    var countHands: Int
+    
+    func alienSay() -> String {
+        return ("Hello, my name is: ")
+    }
+    
+    init(name: String, colour: String, countHands: Int) {
+        self.name = name
+        self.colour = colour
+        self.countHands = countHands
+    }
+}
+
+
+//9. Унаследоваться от него и создать пару других классов (Инопланетян) с переопределенным методом "say".
+
+class AlienOne: Marsian {
+    
+    override func alienSay() -> String {
+        return(super.alienSay() + "Alf-001")
+        
+    }
+}
+
+
+class AlienTwo: Marsian {
+    
+    override func alienSay() -> String {
+        return(super.alienSay() + "Alf-002")
+    }
+    
+}
+
+var marsian = Marsian(name: "AA", colour: "", countHands: 0)
+
+var alienOne = AlienOne(name: "Alf-031", colour: "Brown", countHands: 4)
+var alienTwo = AlienTwo(name: "Alf-052", colour: "Violet", countHands: 6)
+
+
+//10. Объединить всех people и Марсианинов) в один массив.
+
+var humansAndMarsians: [Any] = [ human, cock, manager, fighter, alienOne, alienTwo ]
+
+//11. В цикле выводить тип объекта (People или Марсианин) перед тем как выводить его свойства и вызывать метод
+
+for object in humansAndMarsians {
+    if object is Human {
+        let object = object as! Human
+        print("There are  \(human) and there names are \(human.name), the human height is \(human.height)")
+    } else if object is Marsian {
+        let object = object as! Marsian
+        print("There are \(marsian) and his name is\(marsian.name), and their color is \(marsian.colour)")
+    }
+}
+
 
 
  """
@@ -2944,13 +3044,7 @@ var newHuman = NewHuman()
    ARC Automatic Reference counting
     
   """      
-    
-    
-    
-    
-    
-    
-import UIKit
+  import UIKit
 
 // ARC Automatic Reference counting
 
@@ -2988,11 +3082,11 @@ class Hotel {
         self.name = name
     }
     var apartament: Apartments?
-
+    
     deinit {
         print("\(name) go out")
     }
-
+    
 }
 
 class Apartments {
@@ -3002,8 +3096,8 @@ class Apartments {
     init(room: String) {
         self.room = room
     }
-    var hotel: Hotel?
-
+    weak var hotel: Hotel?  // weak
+    
     deinit {
         print("apartments \(room) is free for rent")
     }
@@ -3017,6 +3111,192 @@ objApartaments = Apartments(room: "33")
 
 objHotel!.apartament = objApartaments
 objApartaments!.hotel = objHotel
+
+objApartaments = nil  // completed with ---> weak
+objHotel = nil
+
+
+class Country {
+    
+    let name: String
+    var capitalCity: City!
+    init(name: String, capitalName: String) {
+        self.name = name
+        self.capitalCity = City(name:  capitalName, country: self)
+    }
+}
+
+class City {
+    
+    let name: String
+    unowned let country: Country  // unowned ---> beshoznaya ssulka
+    
+    init(name: String, country: Country) {
+        self.name = name
+        self.country = country
+    }
+}
+
+var country = Country(name: "Spain", capitalName: "Madrid")
+
+print("The capital of \(country.name) is \(country.capitalCity.name)")
+
+
+
+//2 . Описать несколько структур – любой легковой автомобиль и любой грузовик.
+//3. Структуры должны содержать марку авто, год выпуска, объем багажника/кузова, запущен ли двигатель, открыты ли окна, заполненный объем багажника.
+//4. Описать перечисление с возможными действиями с автомобилем: запустить/заглушить двигатель, открыть/закрыть окна, погрузить/выгрузить из кузова/багажника груз определенногообъема.
+//5. Добавить в структуры метод с одним аргументом типа перечисления, который будет менять свойства структуры в зависимости от действия.
+
+enum VehicleAction{
+    case engineAction
+    case windowsAction
+    case cargoAction
+    case travelAction
+}
+
+
+struct Auto {
+    
+    var name: String
+    var year: String
+    var type: String
+    var windowsOpened: Bool
+    var engineOn = true
+    var trunkLoaded: Bool
+    var volumeEngine: Int
+    var volumeTank: Int
+    
+    mutating func carAction (action: VehicleAction) {
+        
+        switch action {
+        case .engineAction:
+            engineOn = true
+            print("Engine is started")
+            engineOn = false
+            print("Engine is stopped")
+        case .windowsAction:
+            windowsOpened = true
+            print("Windows are opened")
+            windowsOpened = false
+            print("Windows are closed")
+        case .cargoAction:
+            trunkLoaded = true
+            print("The cargo is loaded")
+            trunkLoaded = false
+            print("The cargo is dont load")
+        case .travelAction:
+            if volumeTank < 10 {
+                print("You must tanking your car !!!")
+            } else if  volumeTank > 20 && volumeTank <= 30 {
+                print("You have fuel for 300 kilometers drive")
+            } else if  volumeTank > 30 && volumeTank <= 40 {
+                print("You have fuel for 400 kilometers drive")
+            } else if  volumeTank > 50 && volumeTank <= 60 {
+                print("You have a full tank and for 400 kilometers drive")
+            }
+        }
+    }
+}
+struct Truck {
+    let name: String
+    var year: String
+    var engineOn: Bool
+    var fuelTanking = 500
+    var downloadWeight: Int
+    var distance = 1200
+    var windowsAction: Bool
+    
+    mutating func truckAction (action: VehicleAction) {
+        
+        switch action {
+        case .engineAction:
+            engineOn = true
+            print("Engine is started")
+            engineOn = false
+            print("Engine is stopped")
+        case .windowsAction:
+            windowsAction = true
+            print("Windows are opened")
+            windowsAction = false
+            print("Windows are closed")
+        case .cargoAction:
+            if downloadWeight > 3000 {
+                print("The weight of cargo is biggest then max doenload")
+            } else if downloadWeight > 3000 {
+                print("You can download a cargo")
+            }
+        case .travelAction:
+            if distance > 1000{
+                print("You must tanking a Truck to 300 liters")
+            } else if distance <= 300 {
+                print("You can go")
+            }
+        }
+    }
+}
+
+var car = Auto(name: "Audi", year: "2016", type: "coupe", windowsOpened: false, engineOn: true, trunkLoaded: true, volumeEngine: 3000, volumeTank: 50)
+
+var truck = Truck(name: "Volvo", year: "2019", engineOn: true, downloadWeight: 4000, windowsAction: true)
+
+//6. Инициализировать несколько экземпляров структур. Применить к ним различные действия.
+
+car.carAction(action: .travelAction)
+car.carAction(action: .windowsAction)
+truck.truckAction(action: .travelAction)
+truck.truckAction(action: .cargoAction)
+
+//7. Положить объекты структур в словарь как ключи! а их названия как строки например
+//var dict = [structCar: "structCar"]
+
+print("Ya XZ kak sdelat' ne poluchalos'")
+
+
+
+//8. Почитать о Capture List (см ссылку ниже) - и описать своими словами и сделать скрин своего примера и объяснения https://www.hackingwithswift.com/articles/179/capture..
+
+//9. Набрать код который на белом скрине понять в чем там проблема и решить эту проблему
+
+//10. У нас есть класс мужчины и его паспорта. Мужчина может родиться и не иметь паспорта,
+//но паспорт выдается конкретному мужчине и не может выдаваться без указания владельца. Чтобы
+//разрешить эту проблему, ссылку на паспорт у мужчины сделаем обычной опциональной, а ссылку на
+//владельца у паспорта – константой. Также добавим паспорту конструктор, чтобы сразу
+//определить его владельца. Таким образом, человек сможет существовать без паспорта, сможет его
+//поменять или выкинуть, но паспорт может быть создан только с конкретным владельцем и никогда не
+//может его сменить. Повторить все что на черном скрине и решить проблему соблюдая все правила!
+
+
+class PersonMan {
+    
+    let name: String
+    var passNumber: String
+    var passport: Passport!
+    
+    
+    
+    init(name: String, passNumber: String, number: Passport) {
+        self.name = name
+        self.passNumber = passNumber
+    }
+    
+}
+
+class Passport {
+    unowned let passport: PersonMan
+    init (passport: PersonMan) {
+        self.passport = passport
+    }
+    deinit {
+        print("Man loosed a passport")
+    }
+}
+  
+    
+    
+    
+    
+
     
     
     
