@@ -3475,9 +3475,135 @@ sortedArraybyName
 //var ss = allClassesArray.sorted(by: {$0 < $1})
 
     
+ 
+    
+    """
+    Приведение типов и Проверка типов
+ ================================================================================================================
+ ================================================================================================================
+ ===============================================================================================================
+   Приведение типов и Проверка типов    
+  """     
     
     
+    import UIKit
+
+
+// OPREDELENIYE Klassovoy ierarhii
+class Media {
     
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Film: Media {
+    
+    var director: String
+    
+    init(name: String, director: String) {
+        
+        self.director = director
+        super.init(name: name)
+    }
+}
+
+
+class Music: Media {
+    
+    var artist: String
+    var track: String
+    
+    init(name: String, artist: String, track: String) {
+        self.artist = artist
+        self.track = track
+        super.init(name: name)
+    }
+}
+
+let mediaArray: [AnyObject] = [Film.init(name: "Aviator", director: "Scorseze"), Music(name: "Osen", artist: "DDT", track: "001"), Film.init(name: "Gangs of New York", director: "Redies"), Music.init(name: "Lesnik", artist: "KIW", track: "002")]
+
+
+// Proverka tipa
+var count = (musicCount: 0, filmCount: 0)
+
+for object in mediaArray {
+    
+    if object is Film {
+        
+        count.filmCount += 1
+        
+    } else if object is Music {
+        count.musicCount += 1
+    }
+}
+
+print("In your player there are \(count.filmCount) movies and \(count.musicCount) tracks")
+
+
+// Ponizhayushcheye prividenie
+
+
+for value in mediaArray {
+    
+    if let musics = value as? Music {       // perevodit Music v peremennuyu  -musics-
+        print("The song \(musics.name), by \(musics.artist)")
+    }  else if let films = value as? Film {         // perevodit Music v peremennuyu  -films-
+        print("The movie \(films.name), by produser \(films.director)")
+        
+    }
+}
+
+
+
+// a) Библиотеку книг и видео библиотеку фильмов
+// b)Возможность добавлять новые книги и фильмы и после добавления должна происходить автоматическая сортировка по алфавиту
+// с)Сделать так что б когда я вызову метод(создайте сами его) - "Sort by mood" то фильмы должны отсортировать по настроению:)
+// d)И такойже медод придумать для книг 🙂
+
+
+class Libraries {
+    
+    var name: String
+    var genre: String
+    
+    init(name: String, genre: String) {
+        
+        self.name = name
+        self.genre = genre
+    }
+}
+
+class Books: Libraries {
+    var writer: String
+    var pages: Int
+    
+    init(name: String, genre: String, writer: String, pages: Int) {
+        
+        self.writer = writer
+        self.pages = pages
+        super.init(name: <#T##String#>, genre: <#T##String#>)
+    }
+}
+
+class Movies: Libraries {
+    
+    var produser: String
+    var minutes: Int
+    
+    init(name: String, genre: String, produser: String, minutes: Int) {
+        
+        self.produser = produser
+        self.minutes = minutes
+        super.init(name: <#T##String#>, genre: <#T##String#>)
+    }
+}
+
+
+// b)Возможность добавлять новые книги и фильмы и после добавления должна происходить автоматическая сортировка по алфавиту
+
     
     
     
