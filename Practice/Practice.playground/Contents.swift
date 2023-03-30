@@ -3485,8 +3485,7 @@ sortedArraybyName
    Приведение типов и Проверка типов    
   """     
     
-    
-    import UIKit
+import UIKit
 
 
 // OPREDELENIYE Klassovoy ierarhii
@@ -3523,7 +3522,7 @@ class Music: Media {
     }
 }
 
-let mediaArray: [AnyObject] = [Film.init(name: "Aviator", director: "Scorseze"), Music(name: "Osen", artist: "DDT", track: "001"), Film.init(name: "Gangs of New York", director: "Redies"), Music.init(name: "Lesnik", artist: "KIW", track: "002")]
+let mediaArray: [Any] = [Film.init(name: "Aviator", director: "Scorseze"), Music(name: "Osen", artist: "DDT", track: "001"), Film.init(name: "Gangs of New York", director: "Redies"), Music.init(name: "Lesnik", artist: "KIW", track: "002")]
 
 
 // Proverka tipa
@@ -3563,46 +3562,87 @@ for value in mediaArray {
 // с)Сделать так что б когда я вызову метод(создайте сами его) - "Sort by mood" то фильмы должны отсортировать по настроению:)
 // d)И такойже медод придумать для книг 🙂
 
-
-class Libraries {
+struct Library {
     
     var name: String
     var genre: String
-    
-    init(name: String, genre: String) {
-        
-        self.name = name
-        self.genre = genre
-    }
-}
-
-class Books: Libraries {
     var writer: String
     var pages: Int
+}
+
+class Books {
     
-    init(name: String, genre: String, writer: String, pages: Int) {
+    var bookArray = [Library]()
+    
+    func addBook(name: String, genre: String, writer: String, pages: Int) {
         
-        self.writer = writer
-        self.pages = pages
-        super.init(name: <#T##String#>, genre: <#T##String#>)
+        bookArray.append(Library(name: name, genre: genre, writer: writer, pages: pages))
+        
+        let sortedArray = bookArray.sorted(by: { $0.name < $1.name })
+        
+        for book in sortedArray {
+            
+            print(book.name)
+        }
+    }
+    
+    func sortByMood(genre: String) {
+        let sortedArray = bookArray.sorted(by: { $0.genre < $1.genre})
+        for book in sortedArray {
+            print(book.name)
+        }
     }
 }
 
-class Movies: Libraries {
+let book = Books()
+
+book.addBook(name: "Master i Margarita", genre: "roman", writer: "Bulgakov", pages: 159)
+book.addBook(name: "Bratia Karamazovu", genre: "povest", writer: "Dostoevskiy", pages: 278)
+book.addBook(name: "Mertvue Dushu", genre: "poema", writer: "Gogol", pages: 187)
+book.addBook(name: "Viy", genre: "povest", writer: "Gogol", pages: 152)
+
+book.sortByMood(genre: "roman")
+
+
+struct Video {
+    var name: String
+    var genre: String
+    var lenghth: Int
     
-    var produser: String
-    var minutes: Int
+}
+
+class Movie {
     
-    init(name: String, genre: String, produser: String, minutes: Int) {
+    var movieArray = [Video]()
+    
+    func addMovie(name: String, genre: String, lenghth: Int) {
         
-        self.produser = produser
-        self.minutes = minutes
-        super.init(name: <#T##String#>, genre: <#T##String#>)
+        movieArray.append(Video(name: name, genre: genre, lenghth: lenghth))
+        
+        let sortedMovie = movieArray.sorted(by: { $0.name < $01.name })
+        
+        for movie in sortedMovie {
+            print(movie.name)
+        }
+    }
+    func sortByMood(genre: String) {
+        
+        let sortedArray = movieArray.sorted(by: { $0.genre < $01.genre})
+        
+        for movie in movieArray {
+            
+            print(movie.name)
+        }
     }
 }
 
+let movie = Movie()
 
-// b)Возможность добавлять новые книги и фильмы и после добавления должна происходить автоматическая сортировка по алфавиту
+movie.addMovie(name: "Brother2", genre: "Boevik", lenghth: 117)
+movie.addMovie(name: "Sister", genre: "Boevik", lenghth: 112)
+movie.addMovie(name: "Schindlers List", genre: "Drama", lenghth: 152)
+
+movie.sortByMood(genre: "Drama")
 
     
     
