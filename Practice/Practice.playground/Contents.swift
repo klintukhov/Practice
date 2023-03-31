@@ -3649,9 +3649,136 @@ movie.sortByMood(genre: "Drama")
     
     
     
+        """
+Extension
+ ================================================================================================================
+ ================================================================================================================
+ ===============================================================================================================
+Extension    
     
     
+    import UIKit
+
+var a = String()
+
+extension String {
     
+    func sayHello() {
+        print("Hello")
+    }
+}
+
+var hello = "Hi"
+
+hello.sayHello()
+
+var b = String()
+b.sayHello()
+
+extension Int {
+    
+    var squared: Int {
+        return (self * self)
+    }
+}
+
+var newInt = 30
+2.squared
+
+extension Int {
+    
+    func funcSquared() -> Int {
+        
+        return(self * self)
+    }
+}
+
+10.funcSquared()
+var sqrInt = 5
+sqrInt.funcSquared()
+
+
+class Vasia {
+    
+    var nickName = "IOS developer"
+}
+
+var realVasia = Vasia()
+realVasia.nickName
+
+extension Vasia {
+    
+    func allInfo() -> String {
+        return("My name is Vasia, my nick is \(nickName)")
+        
+    }
+}
+
+var realVasia2 = Vasia()
+realVasia.allInfo()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 3)Расширить String, чтобы принимал сабскрипт вида s[0..<3] и мог также устанавливать значения используя его
+
+
+
+
+
+
+
+
+// 4) Расширить Int и добавить 3 метода возведение в квадрат, куб, степень
+
+class Calculate {
+    var square: Int
+    var kvadrat: Int
+    init(square: Int, kvadrat: Int) {
+    self.square = square
+        self.kvadrat = kvadrat
+
+    
+   
+    }
+}
+    
+extension Calculate {
+    
+    func square1(sideA: Int, sideB: Int) -> Int {
+        return(sideA * sideB)
+        }
+    func kvadrat1() -> Int {
+        return(self.kvadrat * self.kvadrat)
+        
+    }
+}
+var calk = Calculate(square: 12, kvadrat: 3)
+calk.square1(sideA: 2, sideB: 4)
+
+
+
+
+
+
+
+
+
+// 5)Расширить еще 3 структуры на свой вкус и в коментах обосновать для чего это было сделано
+// 6)Добавьте проперти, которое возвращает количество символов в числе
+// 7)Добавить метод который говорит число положительное или отрицательное
+
     
     
     
