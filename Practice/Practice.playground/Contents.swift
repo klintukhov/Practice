@@ -3889,4 +3889,379 @@ extension Int {
 let num = 332
 num.whichNumber()
 
+    
+    """
+Generics
+ ================================================================================================================
+ ================================================================================================================
+ ===============================================================================================================
+Generics """    
+    
+    
+    import UIKit
+
+var stringArray = ["a", "b", "c"]
+var intArray = [1, 2, 3, 4, 5]
+var doubleArray = [1.1, 1.4, 3.4]
+
+func printStringArray(s: [String]) {
+    
+    for i in s {
+        print(i)
+    }
+}
+
+printStringArray(s: stringArray)
+
+func printIntArray(s: [Int]) {
+    for i in s {
+        print(i)
+    }
+}
+
+printIntArray(s: intArray)
+
+func printDoubleArrray(s: [Double]) {
+    for i in s {
+        print(i)
+    }
+}
+
+printDoubleArrray(s: doubleArray)
+
+func printArrayElements<T>(s: [T]) {  // generic, printed all types of array
+    for elements in s {
+        print(elements)
+    }
+}
+
+printArrayElements(s: stringArray)
+printArrayElements(s: intArray)
+printArrayElements(s: doubleArray)
+
+
+func doAnything<T>(x: T) -> T {
+    return x
+}
+
+doAnything(x: "DDD")
+doAnything(x: 123)
+doAnything(x: 2.2)
+doAnything(x: false)
+
+
+
+// 3) Создать любой generic для перечислений.
+
+enum Moto<T> {
+    
+    case engine(T)
+    case wheel(T)
+    case name(T)
+}
+
+let engine = Moto.engine(998)
+let wheel = Moto.wheel(17)
+let name = Moto.name("Honda")
+
+
+// 3) Создать любой generic для структур.
+
+struct MotoSaling<T> {
+    
+    var motos = [T]()
+    
+    mutating func sale(item: T) {
+        motos.remove(at: item as! Int)
+        print(motos)
+    }
+    
+    mutating func buy(item: T) {
+        motos.append(item as! T)
+        print(motos)
+    }
+}
+
+var motosForSale = ["Honda", "Suzuki", "Yamaha"]
+
+var motos = MotoSaling(motos: motosForSale)
+
+motos.buy(item: "Yamaha")
+
+
+//4) Написать функцию, которая принимает Generic объект и складывает в массив/словарь(на выбор)
+
+var myObjects = [String]()
+
+func pushObject<T>(object: T) {
+    var myObjects = [T]()
+    myObjects.append(object)
+    print(myObjects)
+}
+
+pushObject(object: "Hello")
+pushObject(object: "Good bye")
+myObjects
+
+
+//6) Написать класс на свой вкус(любые методы, проперти) универсального типа. Используя extension, расширить класс, добавить сабскрипт. (потренируйтесь)
+
+struct TennisPlayer {
+    
+    var surname: String
+    var sex: String
+    var racket: String
+    var place: Int
+}
+
+class TennisTornament {
+    
+    var playersArray = [TennisPlayer]()
+    
+    func addPlayer(surname: String, sex: String, racket: String, place: Int) {
+        
+        playersArray.append(TennisPlayer(surname: surname, sex: sex, racket: racket, place: place))
+    }
+    
+    func placeSorting(array: [AnyObject]) {
+        
+        var sortedPlayersArray = playersArray.sorted(by: {$0.surname < $01.surname})
+        
+        for player in sortedPlayersArray {
+            
+            print(player.surname)
+        }
+    }
+}
+
+var players = [AnyObject]()
+
+var player = TennisTornament()
+
+extension TennisTornament {
+    
+    func dataPlayer(index: [Any]) {
+        print("The best player of tournament is \(playersArray.self)")
+    }
+}
+
+
+player.addPlayer(surname: "Nadal", sex: "man", racket: "Babolat", place: 2)
+player.addPlayer(surname: "Jokovic", sex: "man", racket: "Head", place: 1)
+player.addPlayer(surname: "Federer", sex: "man", racket: "Wilson", place: 3)
+player.addPlayer(surname: "Sharapova", sex: "woman", racket: "Wilson", place: 4)
+
+
+
+player.placeSorting(array: players)
+player.dataPlayer(index: [1])
+player.dataPlayer(index: [0])
+
+    
+    
+    """
+Protocol
+ ================================================================================================================
+ ================================================================================================================
+ ===============================================================================================================
+Protocol """     
+    
+import UIKit
+
+protocol OneProtocol {
+    
+    var name: String { get set }
+    var age: String { get set }
+    
+    //    mutating  func hello(text: String)
+    
+}
+
+protocol TwoProtocol: OneProtocol {
+    
+}
+
+struct Parents: OneProtocol {
+    
+    var name: String
+    
+    var age: String
+    
+}
+
+struct Kids: OneProtocol {
+    var name: String
+    
+    var age: String
+}
+
+struct Cat: OneProtocol {
+    
+    var name: String
+    
+    var age: String
+}
+
+var parentOne = Parents(name: "John", age: "59")
+var parentTwo = Parents(name: "Jina", age: "53")
+var kid = Kids(name: "Ed", age: "7")
+var cat = Cat(name: "Murka", age: "1")
+
+
+// example without Protocol
+
+var arrayAll: [Any] = [parentOne, parentTwo, kid, cat]
+
+for value in arrayAll {
+    if let parent = value as? Parents {
+        print(parent.name)
+    } else if let kid = value as? Kids {
+        print(kid.name)
+    } else if let cat = value as? Cat {
+        print(cat.name)
+        
+    }
+}
+
+var arrayTwo: [OneProtocol] = [parentOne, parentTwo, kid, cat]
+
+func sortFamilt(array: [OneProtocol]) {
+    
+    for value in array {
+        
+        print("The name is \(value.name), age - \(value.age)")
+    }
+    
+}
+
+sortFamilt(array: arrayTwo)
+
+//3) Почитать про copy on write и понять что это такое - https://www.youtube.com/watch?v=66g_pD3s7TY
+//4) Реализовать структуру IOSCollection и создать в ней copy on write по типу - https://www.youtube.com/watch?v=QsoqHGgX2rE&t=594s
+
+
+struct IosCollection<T>{
+    
+    var array = [T]()
+    
+}
+
+var letterArray = ["a", "b", "c"]
+
+var collectionOne = IosCollection(array: letterArray)
+
+collectionOne.array.append("d")
+
+var collectionThree = collectionOne
+
+print(collectionThree)
+
+collectionThree.array.append("e")
+
+print(collectionOne)
+
+
+//5) Создать протокол Hotel с инициализатором который принимает roomCount, после создать class HotelAlfa добавить свойство roomCount и подписаться на этот протокол
+
+
+protocol Hotel {
+    
+    var roomCount: Int { get set}
+    
+    
+}
+
+
+class HotelAlfa: Hotel {
+    
+    var roomCount: Int
+    
+    init(roomCount: Int) {
+        self.roomCount = roomCount
+    }
+}
+
+let room = HotelAlfa(roomCount: 5)
+
+
+//6) Создать protocol GameDice у него {get} свойство numberDice далее нужно расширить Int так что б когда мы напишем такую конструкцию "let diceCoub = 4 \n diceCoub.numberDice" в консоле мы увидели такую строку - "Выпало 4 на кубике"
+
+
+protocol GameDice {
+    
+    var numberDice: String { get }
+    
+}
+
+extension Int: GameDice {
+    
+    var numberDice: String {
+        
+        return "You have number \(self) on your cube."
+    }
+}
+
+let diceCube = 4
+
+diceCube.numberDice
+
+
+//7) Создать протокол с одним методом и 2 мя свойствами одно из них сделать явно optional, создать класс, подписать на протокол и реализовать только 1 обязательное свойство
+
+@objc protocol Animal {
+    
+    var name: String { get set }
+    
+    @objc optional var weight: Int { get set}  // dont set to class init
+    
+    var says: String { get set }
+    
+    func saying()
+    
+}
+
+class Bull: Animal {
+    
+    var name: String
+    
+    var says: String
+    
+    init(name: String, says: String) {
+        
+        self.name = name
+        self.says = says
+    }
+    
+    func saying() {
+        print("\(name) says - \(says)")
+    }
+}
+
+class Dog: Animal {
+    
+    var name: String
+    
+    var says: String
+    
+    init(name: String, says: String) {
+        
+        self.name = name
+        self.says = says
+        
+    }
+    
+    func saying() {
+        print("\(name) says - \(says)")
+        
+    }
+}
+
+let bull = Bull(name: "Bichok", says: "Muuu")
+bull.saying()
+
+let dog = Dog(name: "Rey", says: "Gav-gav")
+dog.saying()
+
+    
+    
 
